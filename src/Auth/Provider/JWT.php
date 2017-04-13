@@ -1,11 +1,11 @@
 <?php
 
-namespace Dingo\Api\Auth\Provider;
+namespace Zyh\ApiServer\Auth\Provider;
 
 use Exception;
 use Tymon\JWTAuth\JWTAuth;
 use Illuminate\Http\Request;
-use Dingo\Api\Routing\Route;
+use Zyh\ApiServer\Routing\Route;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
@@ -34,7 +34,7 @@ class JWT extends Authorization
      * Authenticate request with a JWT.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Dingo\Api\Routing\Route $route
+     * @param \Zyh\ApiServer\Routing\Route $route
      *
      * @return mixed
      */

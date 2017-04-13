@@ -1,10 +1,10 @@
 <?php
 
-namespace Dingo\Api\Auth\Provider;
+namespace Zyh\ApiServer\Auth\Provider;
 
 use Exception;
 use Illuminate\Http\Request;
-use Dingo\Api\Routing\Route;
+use Zyh\ApiServer\Routing\Route;
 use League\OAuth2\Server\ResourceServer;
 use League\OAuth2\Server\Entity\AccessTokenEntity;
 use League\OAuth2\Server\Exception\OAuthException;
@@ -59,7 +59,7 @@ class OAuth2 extends Authorization
      * Authenticate request with the OAuth 2.0 resource server.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Dingo\Api\Routing\Route $route
+     * @param \Zyh\ApiServer\Routing\Route $route
      *
      * @throws \Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException
      * @throws \Exception
@@ -115,7 +115,7 @@ class OAuth2 extends Authorization
      * Validate a route has any scopes.
      *
      * @param \League\OAuth2\Server\Entity\AccessTokenEntity $token
-     * @param \Dingo\Api\Routing\Route                       $route
+     * @param \Zyh\ApiServer\Routing\Route                       $route
      *
      * @throws \League\OAuth2\Server\Exception\InvalidScopeException
      *
@@ -142,7 +142,7 @@ class OAuth2 extends Authorization
      * Validate a route has all scopes.
      *
      * @param \League\OAuth2\Server\Entity\AccessTokenEntity $token
-     * @param \Dingo\Api\Routing\Route                       $route
+     * @param \Zyh\ApiServer\Routing\Route                       $route
      *
      * @throws \League\OAuth2\Server\Exception\InvalidScopeException
      *
@@ -166,7 +166,7 @@ class OAuth2 extends Authorization
      *
      * @param callable $resolver
      *
-     * @return \Dingo\Api\Contract\Auth\Provider
+     * @return \Zyh\ApiServer\Contract\Auth\Provider
      */
     public function setUserResolver(callable $resolver)
     {
@@ -180,7 +180,7 @@ class OAuth2 extends Authorization
      *
      * @param callable $resolver
      *
-     * @return \Dingo\Api\Contract\Auth\Provider
+     * @return \Zyh\ApiServer\Contract\Auth\Provider
      */
     public function setClientResolver(callable $resolver)
     {

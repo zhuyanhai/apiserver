@@ -92,7 +92,7 @@ return [
     /**
      * 返回转换
      */
-    'transformer' => env('API_TRANSFORMER', Dingo\Api\Transformer\Adapter\Fractal::class),
+    'transformer' => env('API_TRANSFORMER', Zyh\ApiServer\Transformer\Adapter\Fractal::class),
 
     /**
      * 返回值默认格式
@@ -103,6 +103,6 @@ return [
      * 格式处理类
      */
     'formats' => [
-        'json' => Dingo\Api\Http\Response\Format\Json::class,
+        'json' => Zyh\ApiServer\Http\Response\Format\Json::class,
     ],
 ];
