@@ -92,11 +92,6 @@ return [
     ],
 
     /**
-     * 返回转换
-     */
-    'transformer' => env('API_TRANSFORMER', Zyh\ApiServer\Transformer\Adapter\Fractal::class),
-
-    /**
      * 返回值默认格式
      */
     'defaultFormat' => env('API_DEFAULT_FORMAT', 'json'),

@@ -30,19 +30,6 @@ class API extends Facade
     }
 
     /**
-     * Register a class transformer.
-     *
-     * @param string          $class
-     * @param string|\Closure $transformer
-     *
-     * @return \Zyh\ApiServer\Transformer\Binding
-     */
-    public static function transform($class, $transformer)
-    {
-        return static::$app['api.transformer']->register($class, $transformer);
-    }
-
-    /**
      * Get the authenticator.
      *
      * @return \Zyh\ApiServer\Auth\Auth
@@ -70,16 +57,6 @@ class API extends Facade
     public static function internal()
     {
         return static::$app['api.router']->getCurrentRequest() instanceof InternalRequest;
-    }
-
-    /**
-     * Get the response factory to begin building a response.
-     *
-     * @return \Zyh\ApiServer\Http\Response\Factory
-     */
-    public static function response()
-    {
-        return static::$app['api.http.response'];
     }
 
     /**
