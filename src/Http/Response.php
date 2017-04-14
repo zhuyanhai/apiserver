@@ -5,14 +5,12 @@ namespace Zyh\ApiServer\Http;
 use ArrayObject;
 use UnexpectedValueException;
 use Illuminate\Http\JsonResponse;
-use Zyh\ApiServer\Transformer\Binding;
 use Zyh\ApiServer\Event\ResponseIsMorphing;
 use Zyh\ApiServer\Event\ResponseWasMorphed;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Response as IlluminateResponse;
 use Illuminate\Events\Dispatcher as EventDispatcher;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
-use Zyh\ApiServer\Transformer\Factory as TransformerFactory;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
 
@@ -26,25 +24,11 @@ class Response extends IlluminateResponse
     public $exception;
 
     /**
-     * Transformer binding instance.
-     *
-     * @var \Zyh\ApiServer\Transformer\Binding
-     */
-    protected $binding;
-
-    /**
      * Array of registered formatters.
      *
      * @var array
      */
     protected static $formatters = [];
-
-    /**
-     * Transformer factory instance.
-     *
-     * @var \Zyh\ApiServer\Transformer\TransformerFactory
-     */
-    protected static $transformer;
 
     /**
      * Event dispatcher instance.
@@ -59,15 +43,12 @@ class Response extends IlluminateResponse
      * @param mixed                          $content
      * @param int                            $status
      * @param array                          $headers
-     * @param \Zyh\ApiServer\Transformer\Binding $binding
      *
      * @return void
      */
-    public function __construct($content, $status = 200, $headers = [], Binding $binding = null)
+    public function __construct($content, $status = 200, $headers = [])
     {
         parent::__construct($content, $status, $headers);
-
-        $this->binding = $binding;
     }
 
     /**
@@ -114,10 +95,6 @@ class Response extends IlluminateResponse
         $this->content = $this->getOriginalContent();
 
         $this->fireMorphingEvent();
-
-        if (isset(static::$transformer) && static::$transformer->transformableResponse($this->content)) {
-            $this->content = static::$transformer->transform($this->content);
-        }
 
         $formatter = static::getFormatter($format);
 
@@ -251,80 +228,6 @@ class Response extends IlluminateResponse
     public static function addFormatter($key, $formatter)
     {
         static::$formatters[$key] = $formatter;
-    }
-
-    /**
-     * Set the transformer factory instance.
-     *
-     * @param \Zyh\ApiServer\Transformer\Factory $transformer
-     *
-     * @return void
-     */
-    public static function setTransformer(TransformerFactory $transformer)
-    {
-        static::$transformer = $transformer;
-    }
-
-    /**
-     * Get the transformer instance.
-     *
-     * @return \Zyh\ApiServer\Transformer\Factory
-     */
-    public static function getTransformer()
-    {
-        return static::$transformer;
-    }
-
-    /**
-     * Add a meta key and value pair.
-     *
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return \Zyh\ApiServer\Http\Response
-     */
-    public function addMeta($key, $value)
-    {
-        $this->binding->addMeta($key, $value);
-
-        return $this;
-    }
-
-    /**
-     * Add a meta key and value pair.
-     *
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return \Zyh\ApiServer\Http\Response
-     */
-    public function meta($key, $value)
-    {
-        return $this->addMeta($key, $value);
-    }
-
-    /**
-     * Set the meta data for the response.
-     *
-     * @param array $meta
-     *
-     * @return \Zyh\ApiServer\Http\Response
-     */
-    public function setMeta(array $meta)
-    {
-        $this->binding->setMeta($meta);
-
-        return $this;
-    }
-
-    /**
-     * Get the meta data for the response.
-     *
-     * @return array
-     */
-    public function getMeta()
-    {
-        return $this->binding->getMeta();
     }
 
     /**

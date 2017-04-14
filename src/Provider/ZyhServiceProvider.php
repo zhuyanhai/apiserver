@@ -9,7 +9,6 @@ use Zyh\ApiServer\Http\Request;
 use Zyh\ApiServer\Http\Response;
 use Zyh\ApiServer\Console\Command;
 use Zyh\ApiServer\Exception\Handler as ExceptionHandler;
-use Zyh\ApiServer\Transformer\Factory as TransformerFactory;
 
 class ZyhServiceProvider extends ServiceProvider
 {
@@ -32,7 +31,6 @@ class ZyhServiceProvider extends ServiceProvider
     protected function setResponseStaticInstances()
     {
         Response::setFormatters($this->config('formats'));
-        Response::setTransformer($this->app['api.transformer']);
         Response::setEventDispatcher($this->app['events']);
     }
 
