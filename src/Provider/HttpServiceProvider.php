@@ -6,7 +6,6 @@ use Zyh\ApiServer\Auth\Auth;
 use Zyh\ApiServer\Routing\Router;
 use Zyh\ApiServer\Http\Validation;
 use Zyh\ApiServer\Http\Middleware;
-use Zyh\ApiServer\Transformer\Factory;
 use Zyh\ApiServer\Http\RequestValidator;
 use Zyh\ApiServer\Http\RateLimit\Handler;
 use Zyh\ApiServer\Http\Validation\Accept;

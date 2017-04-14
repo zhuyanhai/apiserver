@@ -95,7 +95,6 @@ class ZyhServiceProvider extends ServiceProvider
             'api.router.adapter' => 'Zyh\ApiServer\Contract\Routing\Adapter',
             'api.auth' => 'Zyh\ApiServer\Auth\Auth',
             'api.limiting' => 'Zyh\ApiServer\Http\RateLimit\Handler',
-            'api.transformer' => 'Zyh\ApiServer\Transformer\Factory',
             'api.url' => 'Zyh\ApiServer\Routing\UrlGenerator',
             'api.exception' => ['Zyh\ApiServer\Exception\Handler', 'Zyh\ApiServer\Contract\Debug\ExceptionHandler'],
         ];
