@@ -112,7 +112,7 @@ class Request
     }
 
     /**
-     * Send the request through the Dingo router.
+     * Send the request through the Zyh router.
      *
      * @param \Zyh\ApiServer\Http\Request $request
      *

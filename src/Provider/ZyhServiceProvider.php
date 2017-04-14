@@ -155,18 +155,6 @@ class ZyhServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the transformer factory.
-     *
-     * @return void
-     */
-    protected function registerTransformer()
-    {
-        $this->app->singleton('api.transformer', function ($app) {
-            return new TransformerFactory($app, $this->config('transformer'));
-        });
-    }
-
-    /**
      * Register the documentation command.
      *
      * @return void

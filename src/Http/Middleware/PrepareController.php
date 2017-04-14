@@ -8,7 +8,7 @@ use Zyh\ApiServer\Routing\Router;
 class PrepareController
 {
     /**
-     * Dingo router instance.
+     * Zyh router instance.
      *
      * @var \Zyh\ApiServer\Routing\Router
      */

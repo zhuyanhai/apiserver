@@ -171,7 +171,7 @@ class Handler
      */
     protected function key($key)
     {
-        return sprintf('dingo.api.%s.%s.%s', $this->keyPrefix, $key, $this->getRateLimiter());
+        return sprintf('zhuyanhai.api.%s.%s.%s', $this->keyPrefix, $key, $this->getRateLimiter());
     }
 
     /**
