@@ -55,8 +55,6 @@ class ZyhServiceProvider extends ServiceProvider
 
         $this->registerAuth();
 
-        $this->registerTransformer();
-
         $this->registerDocsCommand();
 
         if (class_exists('Illuminate\Foundation\Application', false)) {
